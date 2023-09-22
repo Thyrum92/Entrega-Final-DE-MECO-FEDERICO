@@ -11,16 +11,19 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
 from pathlib import Path
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-
+root = os.path.dirname(__file__)
+root_list = root.split("\\")
+templates = root_list[0] + "/" +  root_list[1] + "/" +  root_list[2] + "/" +  root_list[3] + "/" +  root_list[4] + "/" +  root_list[5] + "/Personal/template"
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-gzbyv!h-r2tp5^hepqfx0v^2olj0)7_wc%x73m=7okifi(j+9u'
+SECRET_KEY = 'django-insecure-60^=zwox#sgjyxmpf+*2&ab#f%qu^7&9)!p&td6_jdg6t3#hg0'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -37,8 +40,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    # Mis apps
-    'Personal',
+    #Mis Apps
+    'Personal'
 ]
 
 MIDDLEWARE = [
@@ -56,7 +59,7 @@ ROOT_URLCONF = 'PaginaWeb.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [r'C:\Users/feder\Desktop\ProyectoDeMecoFederico\PaginaWeb\PaginaWeb\template'],
+        'DIRS': [templates],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
