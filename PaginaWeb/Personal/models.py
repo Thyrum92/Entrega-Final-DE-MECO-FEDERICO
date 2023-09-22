@@ -25,3 +25,16 @@ class Usuario(models.Model):
     apellido = models.CharField(max_length=20)
     user = models.CharField(max_length=10)
     password = models.CharField(max_length=10)
+
+class Seller(models.Model):
+    cust_id = models.IntegerField()
+    nickname = models.CharField(max_length=25)
+    razon_social = models.CharField(max_length=25)
+    nombre_responsable = models.CharField(max_length=20)
+    apellido_responsable = models.CharField(max_length=20)
+    cotacto_resonsable = models.EmailField(max_length=30)
+    servicio_0 = models.CharField(max_length=15)
+    servicio_1 = models.CharField(max_length=15)
+    servicio_2 = models.CharField(max_length=15)
+    servicio_3 = models.CharField(max_length=15)
+    servicio_4 = models.CharField(max_length=15)
