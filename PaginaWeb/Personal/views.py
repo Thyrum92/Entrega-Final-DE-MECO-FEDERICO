@@ -36,11 +36,14 @@ def agregar_empleado(request):
                 apellido_emergencia = info["apellido_emergencia"],
                 vinculo = info["vinculo"],
                 numero_contacto_emergencia = info["numero_contacto_emergencia"],
-                sector = info["sector"]
+                sector = info["sector"],
+                permisos = info["permisos"]
 
                 )
             
             personal.save()
+
+            return render(request, 'Personal/agregar_empleado.html')
 
     else:
         
@@ -52,6 +55,10 @@ def buscar_empleado(request):
 
 
     return render(request,'Personal/buscar_empleado.html')
+
+def seller_agregado(request):
+
+    return render(request, 'Personal/seller_agregado.html')
 
 def resultado_busqueda_empleado(request):
     
@@ -65,49 +72,61 @@ def resultado_busqueda_empleado(request):
     
     else:
 
-        resp = "Por favor ingrese un apellido para la busqueda"
+        personal = Personal.objects.all()
     
-    return HttpResponse(resp)
+    return render(request, 'Personal/resultado_busqueda_empleado.html', {'personal':personal})
 
+def agregar_seller(request):
 
+    if request.method == "POST":
 
+        formulario = Seller_form(request.POST)
 
+        if formulario.is_valid():
 
+            info = formulario.cleaned_data
 
+            seller = Seller(
 
+                cust_id = info["cust_id"],
+                nickname = info["nickname"],
+                razon_social = info["razon_social"],
+                nombre_responsable = info["nombre_responsable"],
+                apellido_responsable = info["apellido_responsable"],
+                contacto_resonsable = info["contacto_resonsable"],
+                servicio_0 = info["servicio_0"],
+                servicio_1 = info["servicio_1"],
+                servicio_2 = info["servicio_2"],
+                servicio_3 = info["servicio_3"],
+                servicio_4 = info["servicio_4"],
 
+                )
+            
+            seller.save()
 
+            return render(request, 'Personal/seller_agregado.html',{"seller":seller.nickname,"r_z":seller.razon_social})
 
+    else:
+        
+        formulario = Seller_form()
 
+    return render(request, 'Personal/agregar_seller.html', {"form2":formulario})
 
+def buscar_seller(request):
+    return render(request,"Personal/buscar_seller.html")
 
+def resultado_busqueda_seller(request):
+    
+    if request.GET["nickname"]:
 
+        nickname = request.GET["nickname"]
 
+        sellers = Seller.objects.filter(nickname__icontains=nickname)
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-"""user = "lolo"
-password = "cuco"
-
-usuarios = Usuario.objects.values_list('user','password')
-
-for u in usuarios:
-
-    if user == u['user'] and password == u['password']:
-
-        return HttpResponse(f'Bienvenido {user}, su pass es {password}')
+        return render(request, 'Personal/resultado_busqueda_seller.html', {'seller':sellers, "nickname":nickname})
     
     else:
 
-        return HttpResponse("El user no existe")"""
+        sellers = Seller.objects.all()
+    
+    return render(request, 'Personal/resultado_busqueda_seller.html', {'seller':sellers})

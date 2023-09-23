@@ -19,11 +19,11 @@
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ms-auto">
-                        <li class="nav-item"><a class="nav-link" href="./index.html">Inicio</a></li>
-                        <li class="nav-item"><a class="nav-link" href="./buscar_empleado.html">Buscar</a></li>
-                        <li class="nav-item"><a class="nav-link" href="./agregar_empleado.html">Agregar Personal</a></li>
-                        <li class="nav-item"><a class="nav-link" href="./agregar_seller.html">Agregar Seller</a></li>
-                        <li class="nav-item"><a class="nav-link" href="./buscar_seller.html">Buscar Seller</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{% url 'Inicio' %}">Inicio</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{% url 'Buscar Empleado' %}">Buscar</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{% url 'Agregar Empleado' %}">Agregar Personal</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{% url 'Agregar Seller' %}">Agregar Seller</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{% url 'buscar_seller' %}">Buscar Seller</a></li>
                     </ul>
                 </div>
             </div>
@@ -55,15 +55,19 @@
 
             {% endblock %}
 
+            {% block agregado %}
+
+            {% endblock %}
+
         </header>
         <!-- Footer-->
         <footer class="py-5 bg-dark">
             <ul class="list-group-numbered">
-                <li class="nav-item m-5 text-center text-white"><a class="nav-link" href="./index.html">Inicio</a></li>
-                <li class="nav-item m-5 text-center text-white"><a class="nav-link" href="./buscar_empleado.html">Buscar</a></li>
-                <li class="nav-item m-5 text-center text-white"><a class="nav-link" href="./agregar_empleado.html">Agregar Personal</a></li>
-                <li class="nav-item m-5 text-center text-white"><a class="nav-link" href="./agregar_seller.html">Agregar Seller</a></li>
-                <li class="nav-item m-5 text-center text-white"><a class="nav-link" href="./buscar_seller.html">Buscar Seller</a></li>
+                <li class="nav-item m-5 text-center text-white"><a class="nav-link" href="{% url 'Inicio' %}">Inicio</a></li>
+                <li class="nav-item m-5 text-center text-white"><a class="nav-link" href="{% url 'Buscar Empleado' %}">Buscar</a></li>
+                <li class="nav-item m-5 text-center text-white"><a class="nav-link" href="{% url 'Agregar Empleado' %}">Agregar Personal</a></li>
+                <li class="nav-item m-5 text-center text-white"><a class="nav-link" href="{% url 'Agregar Seller' %}">Agregar Seller</a></li>
+                <li class="nav-item m-5 text-center text-white"><a class="nav-link" href="{% url 'buscar_seller' %}">Buscar Seller</a></li>
             </ul>
             <div class="container px-4"><p class="m-0 text-md-end text-white">Copyright &copy; Thyrum 2023</p></div>
         </footer>
