@@ -43,7 +43,7 @@ def agregar_empleado(request):
             
             personal.save()
 
-            return render(request, 'Personal/agregar_empleado.html')
+            return render(request, 'Personal/empleado_agregado.html',{"nombre":personal.nombre,"apellido":personal.apellido})
 
     else:
         
@@ -55,10 +55,6 @@ def buscar_empleado(request):
 
 
     return render(request,'Personal/buscar_empleado.html')
-
-def seller_agregado(request):
-
-    return render(request, 'Personal/seller_agregado.html')
 
 def resultado_busqueda_empleado(request):
     
@@ -112,6 +108,10 @@ def agregar_seller(request):
 
     return render(request, 'Personal/agregar_seller.html', {"form2":formulario})
 
+def seller_agregado(request):
+
+    return render(request, 'Personal/seller_agregado.html')
+
 def buscar_seller(request):
     return render(request,"Personal/buscar_seller.html")
 
@@ -130,3 +130,55 @@ def resultado_busqueda_seller(request):
         sellers = Seller.objects.all()
     
     return render(request, 'Personal/resultado_busqueda_seller.html', {'seller':sellers})
+
+def agregar_producto(request):
+
+    if request.method == "POST":
+
+        formulario = Producto_form(request.POST)
+
+        if formulario.is_valid():
+
+            info = formulario.cleaned_data
+
+            producto = Producto(
+
+                sku = info["sku"],
+                nombre = info["nombre"],
+                pertenece_a = info["pertenece_a"],
+                ubicacion = info["ubicacion"],
+                unidades = info["unidades"],
+                )
+            
+            producto.save()
+
+            return render(request, 'Personal/producto_agregado.html',{"sku":producto.sku,"nombre":producto.nombre,"unidades":producto.unidades})
+
+    else:
+        
+        formulario = Producto_form()
+
+    return render(request, 'Personal/agregar_producto.html', {"form3":formulario})
+
+def proucto_agregado(request):
+
+    return render(request, 'Personal/proucto_agregado.html')
+
+def buscar_producto(request):
+    return render(request,"Personal/buscar_producto.html")
+
+def resultado_busqueda_producto(request):
+    
+    if request.GET["pertenece_a"]:
+
+        pertenece_a = request.GET["pertenece_a"]
+
+        vendedor = Producto.objects.filter(pertenece_a__icontains=pertenece_a)
+
+        return render(request, 'Personal/resultado_busqueda_producto.html', {'vendedor':vendedor, "pertenece_a":pertenece_a})
+    
+    else:
+
+        vendedor = Producto.objects.all()
+    
+    return render(request, 'Personal/resultado_busqueda_producto.html', {'vendedor':vendedor})

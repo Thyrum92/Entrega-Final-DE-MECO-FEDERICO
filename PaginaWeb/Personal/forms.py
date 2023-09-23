@@ -1,6 +1,6 @@
 from django import forms
 
-class Personal_form(forms.Form):
+class Personal_form(forms.Form): #Formulario de personal
 
     nombre = forms.CharField(max_length=60)
     apellido = forms.CharField(max_length=60)
@@ -18,13 +18,7 @@ class Personal_form(forms.Form):
     sector = forms.CharField(max_length=15)
     permisos = forms.CharField(max_length=15)
 
-class Usuario_form(forms.Form):
-    nombre = forms.CharField(max_length=20)
-    apellido = forms.CharField(max_length=20)
-    user = forms.CharField(max_length=10)
-    password = forms.CharField(max_length=10)
-
-class Seller_form(forms.Form):
+class Seller_form(forms.Form): #Formulario de seller
     cust_id = forms.IntegerField()
     nickname = forms.CharField(max_length=25)
     razon_social = forms.CharField(max_length=25)
@@ -36,3 +30,10 @@ class Seller_form(forms.Form):
     servicio_2 = forms.CharField(max_length=15,required=False)
     servicio_3 = forms.CharField(max_length=15,required=False)
     servicio_4 = forms.CharField(max_length=15,required=False)
+
+class Producto_form(forms.Form): #Formulario para stock
+    sku = forms.CharField(max_length=25)
+    nombre = forms.CharField(max_length=20)
+    pertenece_a = forms.CharField(max_length=20)
+    ubicacion = forms.CharField(max_length=10)
+    unidades = forms.IntegerField()

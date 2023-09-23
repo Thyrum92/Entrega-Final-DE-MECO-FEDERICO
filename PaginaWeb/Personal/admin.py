@@ -4,5 +4,5 @@ from .models import *
 # Register your models here.
 
 admin.site.register(Personal)
-admin.site.register(Usuario)
+admin.site.register(Producto)
 admin.site.register(Seller)
