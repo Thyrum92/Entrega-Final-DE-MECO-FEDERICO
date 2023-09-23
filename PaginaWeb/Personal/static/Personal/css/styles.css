@@ -309,8 +309,8 @@ svg {
 }
 
 table {
-  caption-side: bottom;
   border-collapse: collapse;
+  width: 100%;
 }
 
 caption {
@@ -320,20 +320,10 @@ caption {
   text-align: left;
 }
 
-th {
-  text-align: inherit;
-  text-align: -webkit-match-parent;
-}
-
-thead,
-tbody,
-tfoot,
-tr,
-td,
-th {
-  border-color: inherit;
-  border-style: solid;
-  border-width: 0;
+th,
+td {
+  border: 1px solid white;
+  padding: 8px;
 }
 
 label {

@@ -1,54 +1,27 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="./img/favicon-32x32.png" type="image/x-icon">
-    <link rel="icon" href="./img/favicon-32x32.png" type="image/x-icon">
-    <title>Registrar nuevo usuario</title>
-</head>
-<body>
-    <header>
-        <span>
-            <a href="./index.html">Inicio</a>
-            <a href="./agregar_empleado.html">Agregar Empleado</a>
-            <a href="./buscar_empleado.html">Buscar Empleado</a>
-        </span>
-    </header>
-    <main>
-        <section>
-            <div>
-            <h2>Ingrese los datos del empleado a agregar</h2>
-            <!-- Formulario de registro -->
-            <form action="">
-                <h2>Datos Personales</h2>
-                <input type="text" placeholder="Nombre"><br>
-                <input type="text" placeholder="Apellido"><br>
-                <input type="text" placeholder="DNI"><br>
-                <input type="text" placeholder="Fecha de nacimiento"><br>
-                <input type="email" placeholder="Mail"><br>
-                <h2>Ubicacion Geografica</h2>
-                <input type="text" placeholder="Direccion"><br>
-                <input type="text" placeholder="Localidad"><br>
-                <input type="text" placeholder="Numero de contacto"><br>
-                <h2>Contacto de Emergencia</h2>
-                <input type="text" placeholder="Nombre"><br>
-                <input type="text" placeholder="Apellido"><br>
-                <input type="text" placeholder="Vinculo"><br>
-                <input type="text" placeholder="Numero de contacto"><br>
-                <h2>Otros</h2>
-                <input type="text" placeholder="Sector Pre/Post/Consultoria/Back/Sistemas/Logistica/Hibrido"><br>
-                <input type="text" placeholder="Permisos Admin,supervisor,operador"><br>
+{% extends "./padre.html" %}
 
-                <button>Agregar</button>
-            </form>
-            </div>
-        </section>
-    </main>
-    <footer>
-        <h3>By <a href="#">thyrum</a> 2022</h3>
-    </footer>
+{% load static %}
 
-</body>
-</html>
+{% block titulo %}
+
+    Registrá al personal nuevo
+
+{% endblock %}
+
+{% block form %}
+
+    <div>
+        <form action="" method="POST"> {% csrf_token %}
+
+            <table >
+
+                {{form.as_table}}
+
+            </table>
+
+            <input type="submit" value="Agregar">
+
+        </form>
+    </div>
+
+{% endblock %}
